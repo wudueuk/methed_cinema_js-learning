@@ -18,13 +18,27 @@ const menuLink = () => {
 				filmWeek.style.display = 'none';
 				title.textContent = target.textContent;
 
+				if (target.classList.contains('get-nav__link_triends')) {
+					getTriends('all').then(data => renderCard(data.results));
+				}
+
 				if (target.classList.contains('get-nav__link_popular-movies')) {
 					getPopular('movie')
 						.then(data => renderCard(data.results));
 				}
 
+				if (target.classList.contains('get-nav__link_popular-tv')) {
+					getPopular('tv')
+						.then(data => renderCard(data.results));
+				}
+
 				if (target.classList.contains('get-nav__link_top-tv')) {
 					getTop('tv')
+						.then(data => renderCard(data.results));
+				}
+
+				if (target.classList.contains('get-nav__link_top-movies')) {
+					getTop('movie')
 						.then(data => renderCard(data.results));
 				}
 			}

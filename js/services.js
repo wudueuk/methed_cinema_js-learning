@@ -11,7 +11,9 @@ const getData = url => fetch(url)
 		}
 		throw `Что-то пошло не так, ошибка ${response.status}`
 	})
-	.catch(err => console.error(err));
+	.catch(err => {
+		console.error(err);
+	});
 
 
 export const getTriends = (type = 'all', period = 'day', page = 1) => {
@@ -26,5 +28,15 @@ export const getPopular = async (type, page = 1) => {
 
 export const getTop = async (type, page = 1) => {
 	const url = `${BASE_URL}${type}/top_rated?api_key=${API_KEY}${LANG}&page=${page}`;
+	return await getData(url);
+};
+
+export const getVideo = async (id, type) => {
+	const url = `${BASE_URL}${type}/${id}/videos?api_key=${API_KEY}${LANG}`;
+	return await getData(url);
+};
+
+export const search = async (query, page = 1) => {
+	const url = `${BASE_URL}search/multi?api_key=${API_KEY}${LANG}&query=${query}&page=${page}&include_adult=false`;
 	return await getData(url);
 };
