@@ -15,7 +15,7 @@ const renderCard = async (data) => {
 		card.className = 'other-films__item';
 
 		const link = document.createElement('a');
-		link.className = 'other-films__link';
+		link.className = 'other-films__link tube';
 
 		if (youtubeResult) {
 
